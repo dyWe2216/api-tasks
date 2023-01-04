@@ -3,11 +3,11 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
   Post,
   Put,
-  UsePipes,
-  ValidationPipe,
 } from '@nestjs/common';
 import { TaskDTO } from './dto/task.dto';
 import { TaskService } from './task.service';
