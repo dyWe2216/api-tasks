@@ -1,33 +1,43 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { TaskDTO } from './dto/task.dto';
 import { TaskService } from './task.service';
 
 @Controller('api/v1/task')
 export class TaskController {
-    constructor(private readonly taskService: TaskService) {}
+  constructor(private readonly taskService: TaskService) {}
 
-    @Post()
-    create(@Body('description') taskDTO: TaskDTO) {
-        return this.taskService.create(taskDTO);
-    }
+  @Post()
+  create(@Body('description') taskDTO: TaskDTO) {
+    return this.taskService.create(taskDTO);
+  }
 
-    @Get()
-    findAll() {
-        return this.taskService.findAll()
-    }
+  @Get()
+  findAll() {
+    return this.taskService.findAll();
+  }
 
-    @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.taskService.findOne(id);
-    }
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.taskService.findOne(id);
+  }
 
-    @Put(':id')
-    update(@Param('id') id: string, @Body() taskDTO: TaskDTO) {
-        return this.taskService.update(id, taskDTO);
-    }
+  @Put(':id')
+  update(@Param('id') id: string, @Body() taskDTO: TaskDTO) {
+    return this.taskService.update(id, taskDTO);
+  }
 
-    @Delete(':id')
-    delete(@Param('id') id: string ) {
-        return this.taskService.delete(id);
-    }
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.taskService.delete(id);
+  }
 }
